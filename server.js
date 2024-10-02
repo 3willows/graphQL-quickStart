@@ -27,9 +27,18 @@ app.all(
   })
 )
  
+var { ruruHTML } = require("ruru/server")
+ 
+// Serve the GraphiQL IDE.
+app.get("/", (_req, res) => {
+  res.type("html")
+  res.end(ruruHTML({ endpoint: "/graphql" }))
+})
+
 // Start the server at port
 app.listen(4000)
 console.log("Running a GraphQL API server at http://localhost:4000/graphql")
+
 
 // Test with
 // curl -X POST \
