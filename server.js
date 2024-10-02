@@ -15,6 +15,13 @@ var root = {
   hello() {
     return "Hello world!"
   },
+  rollDice({ numDice, numSides }) {
+    var output = [];
+    for (var i = 0; i < numDice; i++) {
+      output.push(1 + Math.floor(Math.random() * (numSides || 6)));
+    }
+    return output;
+  }
 }
 
 var app = express()
@@ -39,9 +46,3 @@ app.get("/", (_req, res) => {
 // Start the server at port
 app.listen(4000)
 console.log("Running a GraphQL API server at http://localhost:4000/graphql")
-
-// Test with
-// curl -X POST \
-// -H "Content-Type: application/json" \
-// -d '{"query": "{ hello }"}' \
-// http://localhost:4000/graphql
