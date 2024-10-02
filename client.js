@@ -4,6 +4,20 @@ fetch('http://localhost:4000/graphql', {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
+    query: '{ rollThreeDice }',
+  }),
+})
+  .then(res => res.json())
+  .then(result => console.log(result));
+
+
+
+fetch('http://localhost:4000/graphql', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
     query: '{ hello }',
   }),
 })

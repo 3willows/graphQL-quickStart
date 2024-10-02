@@ -7,6 +7,9 @@ var schema = buildSchema(`
   type Query {
     hello: String,
     rollDice(numDice: Int!, numSides: Int): [Int]
+    quoteOfTheDay: String
+    random: Float!
+    rollThreeDice: [Int]
   }
 `)
 
@@ -16,12 +19,21 @@ var root = {
     return "Hello world!"
   },
   rollDice({ numDice, numSides }) {
-    var output = [];
+    var output = []
     for (var i = 0; i < numDice; i++) {
-      output.push(1 + Math.floor(Math.random() * (numSides || 6)));
+      output.push(1 + Math.floor(Math.random() * (numSides || 6)))
     }
-    return output;
-  }
+    return output
+  },
+  quoteOfTheDay() {
+    return Math.random() < 0.5 ? "Take it easy" : "Salvation lies within"
+  },
+  random() {
+    return Math.random()
+  },
+  rollThreeDice() {
+    return [1, 2, 3].map(_ => 1 + Math.floor(Math.random() * 6))
+  },
 }
 
 var app = express()
