@@ -30,3 +30,9 @@ app.all(
 // Start the server at port
 app.listen(4000)
 console.log("Running a GraphQL API server at http://localhost:4000/graphql")
+
+// Test with
+// curl -X POST \
+// -H "Content-Type: application/json" \
+// -d '{"query": "{ hello }"}' \
+// http://localhost:4000/graphql
