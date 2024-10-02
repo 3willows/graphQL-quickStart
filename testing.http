@@ -4,3 +4,13 @@ Content-Type: application/json
 {
   "query": "{ hello }"
 }
+
+###
+
+POST http://localhost:4000/graphql
+Content-Type: application/json
+
+{
+  "query": "query RollDice($dice: Int!, $sides: Int) { rollDice(numDice: $dice, numSides: $sides) }",
+  "variables": { "dice": 3, "sides": 6 }
+}
